@@ -12,7 +12,7 @@
 
 ### Project architecture
 
-#### The Core Microservices include:
+#### Core Microservices:
 
 * User Service
     - Responsibilities: Managing user accounts, authentication, authorization, user profiles, and user settings.
@@ -118,7 +118,7 @@
 
 ![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/ER-Diagram.png)
 
-## Database Per Table
+## Tables in each database service
 1. User Service: account, user, user_address, wishlist
 2. Product Service:	products, categories, sub_categories, product_inventory, discount
 3. Order Service: order_details, order_item
