@@ -23,3 +23,7 @@ spring:
       ddl-auto: create
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+application:
+  config:
+    user-url: http://localhost:8090/api/v1/users

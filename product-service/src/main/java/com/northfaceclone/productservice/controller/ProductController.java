@@ -16,6 +16,7 @@ public class ProductController {
 
     private final ProductService service;
 
+//    Create a new Product
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void save(
@@ -24,8 +25,17 @@ public class ProductController {
         service.saveProduct(product);
     }
 
+//    Get All Products
     @GetMapping
     public ResponseEntity<List<Products>> findAllUsers(){
         return ResponseEntity.ok(service.findAllProducts());
+    }
+
+    //    Get All Products
+    @GetMapping("/product/{user-id}")
+    public ResponseEntity<List<Products>> findAllUsers(
+            @PathVariable("user-id")Integer userId
+    ){
+        return ResponseEntity.ok(service.findAllProductsByUser(userId));
     }
 }

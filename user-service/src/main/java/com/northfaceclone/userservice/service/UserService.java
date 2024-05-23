@@ -1,5 +1,6 @@
 package com.northfaceclone.userservice.service;
 
+import com.northfaceclone.userservice.dto.WishListResponseDto;
 import com.northfaceclone.userservice.models.User;
 import com.northfaceclone.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +21,18 @@ public class UserService {
 
     public List<User> findAllUsers(){
         return repository.findAll();
+    }
+
+    public WishListResponseDto findProductsInWishList(Integer productId){
+        var user = repository.findById(productId)
+                .orElse(
+                        User.builder()
+                                .first_name("Not Found")
+                                .last_name("Not Found")
+                                .build()
+                );
+        var products = null; // Find all the Products from the product microservice
+
+        return null;
     }
 }

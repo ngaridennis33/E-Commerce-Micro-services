@@ -20,4 +20,8 @@ public class ProductService {
     public List<Products> findAllProducts(){
         return productRepository.findAll();
     }
+
+    public List<Products>findAllProductsByUser(Integer userId){
+        return productRepository.findAllProductsByUserId(userId);
+    }
 }
