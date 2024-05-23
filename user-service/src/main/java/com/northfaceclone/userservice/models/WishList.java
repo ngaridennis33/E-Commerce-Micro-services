@@ -19,4 +19,6 @@ public class WishList extends BaseEntity {
 
     private int total;
 
+    private int product_id;
+
 }

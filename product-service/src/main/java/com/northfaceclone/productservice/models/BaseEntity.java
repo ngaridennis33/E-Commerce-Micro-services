@@ -21,6 +21,8 @@ public class BaseEntity {
     @GeneratedValue
     private Integer id;
 
+    private String description;
+
     private LocalDateTime created_at;
 
     private LocalDateTime updated_at;

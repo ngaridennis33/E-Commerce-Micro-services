@@ -17,8 +17,6 @@ public class Products extends BaseEntity {
 
     private String name;
 
-    private String desc;
-
     private int sub_category_id;
 
     private int inventory_id;
