@@ -1,42 +1,69 @@
 package com.northfaceclone.userservice.controller;
 
-import com.northfaceclone.userservice.dto.WishListResponseDto;
-import com.northfaceclone.userservice.models.User;
+import com.northfaceclone.userservice.dto.UserDTO;
+import com.northfaceclone.userservice.dto.UserResponseDTO;
 import com.northfaceclone.userservice.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/users")
 public class UserController {
 
-    private final UserService service;
+    private final UserService userService;
 
-//    Create a new user
+    // Create a new user
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(
-            @RequestBody User user
-    ){
-        service.saveUser(user);
+    public UserResponseDTO saveUser(
+            @Valid @RequestBody UserDTO dto
+    ) {
+        return this.userService.saveUser(dto);
     }
 
-//    Get all users
+    // Get all users
     @GetMapping
-    public ResponseEntity<List<User>> findAllUsers(){
-        return ResponseEntity.ok(service.findAllUsers());
+    public List<UserResponseDTO> findAllUsers() {
+        return userService.findAllUsers();
     }
 
-//    Get All products in the wish list
-    @GetMapping("with-product/{product-id")
-    public ResponseEntity<WishListResponseDto> findProductsInWishList(
-            @PathVariable("product-id") Integer productId
+    //  Get User By Id
+    @GetMapping("/{user-id}")
+    public UserResponseDTO findUserById(
+            @PathVariable("user-id") Integer userId
+    ) {
+        return userService.findUserById(userId);
+    }
+
+
+//    // Get All products in the wish list
+//    @GetMapping("with-product/{product-id")
+//    public ResponseEntity<UserResponseDto> findProductsInWishList(
+//            @PathVariable("product-id") Integer productId
+//    ){
+//        return ResponseEntity.ok(service.findProductsInWishList(productId));
+//    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> handleMethodArgumentNotValidException(
+            MethodArgumentNotValidException exp
     ){
-        return ResponseEntity.ok(service.findProductsInWishList(productId));
+        var errors = new HashMap<String, String>();
+        exp.getBindingResult().getAllErrors()
+                .forEach(error ->{
+                    var fieldName = ((FieldError) error).getField();
+                    var errorMessage = error.getDefaultMessage();
+                    errors.put(fieldName, errorMessage);
+                });
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 }
