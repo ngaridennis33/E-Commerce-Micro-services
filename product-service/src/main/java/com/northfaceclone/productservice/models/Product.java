@@ -12,11 +12,17 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-@Entity(name = "sub_categories")
-public class SubCategories extends BaseEntity {
+@Entity(name = "products")
+public class Product extends BaseEntity {
 
     private String name;
 
-    private int category_id;
+    private int sub_category_id;
+
+    private int inventory_id;
+
+    private int price;
+
+    private int discount;
 
 }

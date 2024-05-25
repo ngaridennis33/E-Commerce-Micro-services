@@ -7,17 +7,15 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-public class Order extends BaseEntity {
+public class OrderItem extends BaseEntity {
 
-    private int user_id;
+    private int order_id;
 
     private int payment_id;
 

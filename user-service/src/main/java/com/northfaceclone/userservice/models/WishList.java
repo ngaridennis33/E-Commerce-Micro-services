@@ -1,6 +1,9 @@
 package com.northfaceclone.userservice.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,10 +18,10 @@ import lombok.experimental.SuperBuilder;
 @Entity(name = "wish_list")
 public class WishList extends BaseEntity {
 
-    private String user_id;
-
-    private int total;
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    @JsonManagedReference
+    private User user;
 
     private int product_id;
-
 }

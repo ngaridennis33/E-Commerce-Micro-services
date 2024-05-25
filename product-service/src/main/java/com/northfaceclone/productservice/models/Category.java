@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity(name = "category")
-public class Categories extends BaseEntity {
+public class Category extends BaseEntity {
 
     private String name;
 

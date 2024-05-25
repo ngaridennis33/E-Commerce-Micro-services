@@ -44,15 +44,6 @@ public class UserController {
         return userService.findUserById(userId);
     }
 
-
-//    // Get All products in the wish list
-//    @GetMapping("with-product/{product-id")
-//    public ResponseEntity<UserResponseDto> findProductsInWishList(
-//            @PathVariable("product-id") Integer productId
-//    ){
-//        return ResponseEntity.ok(service.findProductsInWishList(productId));
-//    }
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException exp

@@ -1,38 +1,45 @@
 package com.northfaceclone.userservice.service;
 
-import com.northfaceclone.userservice.dto.WishListResponseDto;
-import com.northfaceclone.userservice.models.User;
+import com.northfaceclone.userservice.dto.UserDTO;
+import com.northfaceclone.userservice.dto.UserResponseDTO;
+import com.northfaceclone.userservice.mapper.UserMapper;
 import com.northfaceclone.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository repository;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public void saveUser(User user){
-        repository.save(user);
+    // Create a New User
+    public UserResponseDTO saveUser(
+            UserDTO userDTO
+    ) {
+        var user = userMapper.toUser(userDTO);
+        var savedUser = userRepository.save(user);
+        return userMapper.toUserResponseDTO(savedUser);
     }
 
-    public List<User> findAllUsers(){
-        return repository.findAll();
+    // Get All Users
+    public List<UserResponseDTO> findAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(userMapper::toUserResponseDTO)
+                .collect(Collectors.toList());
     }
 
-    public WishListResponseDto findProductsInWishList(Integer productId){
-        var user = repository.findById(productId)
-                .orElse(
-                        User.builder()
-                                .first_name("Not Found")
-                                .last_name("Not Found")
-                                .build()
-                );
-        var products = null; // Find all the Products from the product microservice
-
-        return null;
+    // Get User By Id
+    public UserResponseDTO findUserById(Integer id) {
+        return userRepository.findById(id)
+                .map(userMapper::toUserResponseDTO)
+                .orElse(null);
     }
+
+    ;
 }

@@ -1,2 +1,4 @@
-package com.northface_clone.orderservice.controller;public class OrderControler {
+package com.northface_clone.orderservice.controller;
+
+public class OrderControler {
 }
