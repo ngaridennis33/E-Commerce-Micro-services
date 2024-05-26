@@ -1,12 +1,12 @@
 package com.northfaceclone.userservice.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -18,11 +18,16 @@ import java.time.LocalDateTime;
 public class BaseEntity {
 
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @CreationTimestamp
+    @Column(nullable = false,
+            updatable = false)
     private LocalDateTime created_at;
 
+    @UpdateTimestamp
+    @Column(nullable = false)
     private LocalDateTime updated_at;
 
     private String created_by;
