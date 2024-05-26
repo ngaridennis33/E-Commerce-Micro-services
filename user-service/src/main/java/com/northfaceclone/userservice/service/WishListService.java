@@ -1,10 +1,7 @@
 package com.northfaceclone.userservice.service;
 
 import com.northfaceclone.userservice.client.UserClient;
-import com.northfaceclone.userservice.dto.FullUserResponse;
-import com.northfaceclone.userservice.dto.Product;
-import com.northfaceclone.userservice.dto.WishListDTO;
-import com.northfaceclone.userservice.dto.WishListResponseDTO;
+import com.northfaceclone.userservice.dto.*;
 import com.northfaceclone.userservice.mapper.WishListMapper;
 import com.northfaceclone.userservice.repository.WishListRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,15 +37,20 @@ public class WishListService {
     }
 
     // findAllProductsInWishList
-    public FullUserResponse findAllProductsInWishList(Integer productId)  {
-        var product = wishListRepository.findById(productId)
-                .orElse(
-                        Product.builder()
-                                .name("Not Found")
-                                .description("Not Found")
-                                .build()
-                );
-        var products = userClient.findAllProductsInWishList(productId);
-        return products;
-    };
+//    public FullUserResponse findAllProductsInWishList(Integer productId)  {
+//        var product = wishListRepository.findById(productId)
+//                .orElse(
+//                        Product.builder()
+//                                .name("Not Found")
+//                                .description("Not Found")
+//                                .build()
+//                );
+//        var products = userClient.findAllProductsInWishList(productId);
+//        return products;
+//    };
+
+//    Get Item ById
+public List<Product> findAllProductsInWishList(Integer productId) {
+    return userClient.findAllProductsInWishList(productId);
+}
 }

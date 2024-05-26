@@ -33,7 +33,7 @@ public class WishListController {
     }
 
     // Get All products in the WishList from Products Microservice
-    @GetMapping
+    @GetMapping("/{product-id}")
     public ResponseEntity<List<Product>> findAllProductsInWishList(
             @PathVariable("product-id")Integer productId
     ){

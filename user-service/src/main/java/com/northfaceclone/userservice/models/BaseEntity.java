@@ -19,18 +19,19 @@ public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false, updatable = false)
     private Long id;
 
     @CreationTimestamp
     @Column(nullable = false,
             updatable = false)
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(nullable = false)
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 
-    private String created_by;
+    private String createdBy;
 
-    private String lastModified_by;
+    private String lastModifiedBy;
 }

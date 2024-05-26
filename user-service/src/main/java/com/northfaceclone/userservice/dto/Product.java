@@ -3,14 +3,14 @@ package com.northfaceclone.userservice.dto;
 import com.northfaceclone.userservice.models.WishList;
 import lombok.*;
 
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Product extends WishList {
+public class Product {
 
-    private int id;
+//    private int id;
 
     private String name;
 
