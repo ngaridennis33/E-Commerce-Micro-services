@@ -1,0 +1,9 @@
+
+j
+java:S1948N"'Make "roles" transient or serializable.(ÿÎÌ“8¤á­ğû1J$ad18c5c8-8eba-4149-8818-fe834f4a96bc
+x
+java:S6353@"<Use concise character class syntax '\\d' instead of '[0-9]'.(İ®æÈJ$07919731-a4b5-4bd6-a22f-483a7057b693
+x
+java:S6353@"<Use concise character class syntax '\\d' instead of '[0-9]'.(İ®æÈJ$e4027708-e09b-4926-add4-b69254baf410
+—
+java:S6204b"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8á–½ğû1

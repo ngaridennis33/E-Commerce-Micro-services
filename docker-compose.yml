@@ -3,13 +3,27 @@ services:
     image: postgres:latest
     container_name: north-faceMicroservice-db
     environment:
-      POSTGRES_PASSWORD: "password123"
-      POSTGRES_USER: "postgres"
-      POSTGRES_DB: "northface"
+      POSTGRES_PASSWORD: password123
+      POSTGRES_USER: postgres
+      POSTGRES_DB: northface
     ports:
-      - '5432:5432'
+      - 5432:5432
     volumes:
       - data:/var/lib/postgresql/data
+    networks:
+      - spring-demo
+    restart: unless-stopped
+  mail-dev:
+    container_name: mail-dev-northface
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+
+networks:
+  spring-demo:
+    driver: bridge
 
 volumes:
   data:

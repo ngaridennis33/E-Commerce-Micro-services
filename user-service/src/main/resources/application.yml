@@ -1,3 +1,14 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: users
+  servlet:
+    multipart:
+      max-file-size: 50MB
+  config:
+    import: optional:configserver:http://localhost:8888
+
 eureka:
   instance:
     hostname: localhost
@@ -7,23 +18,13 @@ eureka:
 
 
 server:
+  servelet:
+    context-path: api/v1
   port: 8090
-spring:
-  application:
-    name: users
-  config:
-    import: optional:configserver:http://localhost:8888
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/northface
-    username: postgres
-    password: password123
-  jpa:
-    hibernate:
-      ddl-auto: create
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+springdoc:
+  default-produces-media-type: application/json
 
 application:
   config:
-    user-url: http://8090/api/v1/users
+    user-url: http://8092/api/vi/products
