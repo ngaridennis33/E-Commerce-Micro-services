@@ -1,6 +1,8 @@
 package com.northfaceclone.userservice.service.impl;
 
 import com.northfaceclone.userservice.dto.model.EmailTemplateName;
+import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
+import com.northfaceclone.userservice.dto.request.AuthenticationResponse;
 import com.northfaceclone.userservice.dto.request.RegistrationRequest;
 import com.northfaceclone.userservice.models.Token;
 import com.northfaceclone.userservice.models.User;
@@ -12,6 +14,7 @@ import com.northfaceclone.userservice.service.EmailService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +31,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
     private final EmailService emailService;
+    private final AuthenticationManager authenticationManager;
 
     @Value("${application.mailing.frontend.activation-url}")
     private String activationUrl;
@@ -86,5 +90,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             codeBuilder.append(characters.charAt(randomIndex));
         }
         return codeBuilder.toString();
+    }
+
+    public AuthenticationResponse authenticate(AuthenticationRequest request){
+        var auth = authenticationManager;
+        return null;
     }
 }

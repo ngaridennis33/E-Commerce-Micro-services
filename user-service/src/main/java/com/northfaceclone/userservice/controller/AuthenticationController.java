@@ -1,5 +1,7 @@
 package com.northfaceclone.userservice.controller;
 
+import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
+import com.northfaceclone.userservice.dto.request.AuthenticationResponse;
 import com.northfaceclone.userservice.dto.request.RegistrationRequest;
 import com.northfaceclone.userservice.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -28,7 +30,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticateResponse> authenticate(
+    public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody @Valid AuthenticationRequest request
     ){
         return ResponseEntity.ok(service.authenticate(request));
