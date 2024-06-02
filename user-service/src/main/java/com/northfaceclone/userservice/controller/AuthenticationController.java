@@ -1,7 +1,7 @@
 package com.northfaceclone.userservice.controller;
 
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
-import com.northfaceclone.userservice.dto.request.AuthenticationResponse;
+import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
 import com.northfaceclone.userservice.dto.request.RegistrationRequest;
 import com.northfaceclone.userservice.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -34,5 +34,12 @@ public class AuthenticationController {
             @RequestBody @Valid AuthenticationRequest request
     ){
         return ResponseEntity.ok(service.authenticate(request));
+    }
+
+    @PostMapping("/activate-account")
+    public void confirm(
+            @RequestParam String token
+    ) throws MessagingException {
+        service.activateAccount(token);
     }
 }
