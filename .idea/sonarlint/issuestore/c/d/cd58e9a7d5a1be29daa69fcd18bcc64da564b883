@@ -1,9 +1,7 @@
 
+£
+java:S4144c"[Update this method so that its implementation is not identical to "getUsername" on line 70.(ú›Šøøÿÿÿÿ8ÝÃÎ¸ý1J$9b91a99b-6d36-4db8-b158-68c7475f0754
 j
-java:S1948L"'Make "roles" transient or serializable.(ÿÎÌ“8¤á­ðû1J$bc55317a-27fe-4b94-89b5-cf8e25eafa83
-x
-java:S6353>"<Use concise character class syntax '\\d' instead of '[0-9]'.(Ý®æÈJ$615ac196-3326-44ae-ae73-d6b1516161f0
-x
-java:S6353>"<Use concise character class syntax '\\d' instead of '[0-9]'.(Ý®æÈJ$2d049f92-6e67-4acc-a4f8-9f01274eb9f6
+java:S19483"'Make "roles" transient or serializable.(ÿÎÌ“8¤á­ðû1J$74b3c00d-4a72-4314-b458-b6272f2f518c
 ½
-java:S6204`"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8á–½ðû1J$e12a1ef4-83c5-45e4-bfee-3d0ec712fbd9
+java:S6204B"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8á–½ðû1J$a95e2f0e-2113-45ba-b23f-04f2e7908cf7
