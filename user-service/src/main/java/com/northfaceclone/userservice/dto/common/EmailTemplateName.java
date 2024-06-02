@@ -1,4 +1,4 @@
-package com.northfaceclone.userservice.dto.model;
+package com.northfaceclone.userservice.dto.common;
 
 import lombok.Getter;
 

@@ -1,6 +1,6 @@
 package com.northfaceclone.userservice.service.impl;
 
-import com.northfaceclone.userservice.dto.model.EmailTemplateName;
+import com.northfaceclone.userservice.dto.common.EmailTemplateName;
 import com.northfaceclone.userservice.service.EmailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -39,7 +39,7 @@ public class EmailServiceImpl implements EmailService {
         if(emailTemplate == null){
             templateName = "confirm-email";
         } else {
-            templateName = emailTemplate.name();
+            templateName = emailTemplate.getName();
         }
 
         MimeMessage mimeMessage = emailSender.createMimeMessage();

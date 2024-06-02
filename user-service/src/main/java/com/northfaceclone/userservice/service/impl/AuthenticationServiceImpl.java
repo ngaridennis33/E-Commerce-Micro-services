@@ -1,6 +1,6 @@
 package com.northfaceclone.userservice.service.impl;
 
-import com.northfaceclone.userservice.dto.model.EmailTemplateName;
+import com.northfaceclone.userservice.dto.common.EmailTemplateName;
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
 import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
 import com.northfaceclone.userservice.dto.request.RegistrationRequest;
@@ -13,7 +13,6 @@ import com.northfaceclone.userservice.security.JwtService;
 import com.northfaceclone.userservice.service.AuthenticationService;
 import com.northfaceclone.userservice.service.EmailService;
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
