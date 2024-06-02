@@ -18,8 +18,8 @@ eureka:
 
 
 server:
-  servelet:
-    context-path: api/v1
+  servlet:
+    context-path: /api/v1/
   port: 8090
 
 springdoc:

@@ -30,11 +30,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final EmailService emailService;
 
     @Value("${application.mailing.frontend.activation-url}")
-    private String activateUrl;
+    private String activationUrl;
 
     public void register(RegistrationRequest request) throws MessagingException {
         var userRole = roleRepository.findByName("USER")
-            // todo - Better exception Handling
+                // todo - Better exception Handling
                 .orElseThrow(() -> new IllegalArgumentException("ROLE USER was not Initialized"));
         var user = User.builder()
                 .firstname(request.getFirstname())
@@ -51,37 +51,37 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private void sendValidationEmail(User user) throws MessagingException {
         var newToken = generateAndSaveActivationToken(user);
-         // Send Email
+        // Send Email
         emailService.sendEmail(
                 user.getEmail(),
                 user.fullName(),
                 EmailTemplateName.ACTIVATE_ACCOUNT,
-                activateUrl,
+                activationUrl,
                 newToken,
                 "Account activation"
         );
 
     }
 
-    private String generateAndSaveActivationToken(User user){
+    private String generateAndSaveActivationToken(User user) {
 
         //Generate Token
         String generatedToken = generateActivationCode(6);
-            var token = Token.builder()
-                    .token(generatedToken)
-                    .createdAt(LocalDateTime.now())
-                    .expiresAt(LocalDateTime.now().plusMinutes(15))
-                    .user(user)
-                    .build();
-            tokenRepository.save(token);
-            return  generatedToken;
+        var token = Token.builder()
+                .token(generatedToken)
+                .createdAt(LocalDateTime.now())
+                .expiresAt(LocalDateTime.now().plusMinutes(15))
+                .user(user)
+                .build();
+        tokenRepository.save(token);
+        return generatedToken;
     }
 
     private String generateActivationCode(int length) {
         String characters = "0123456789";
         StringBuilder codeBuilder = new StringBuilder();
         SecureRandom secureRandom = new SecureRandom();
-        for (int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             int randomIndex = secureRandom.nextInt(characters.length());
             codeBuilder.append(characters.charAt(randomIndex));
         }

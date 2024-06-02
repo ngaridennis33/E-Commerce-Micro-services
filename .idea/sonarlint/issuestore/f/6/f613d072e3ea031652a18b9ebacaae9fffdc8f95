@@ -1,5 +1,0 @@
-
-
-java:S6204""zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹
-7
-java:S1116,"Remove this empty statement.(Åñ­õşÿÿÿÿ

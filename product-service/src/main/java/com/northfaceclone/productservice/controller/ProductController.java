@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/vi/products")
+@RequestMapping("/products")
 @RequiredArgsConstructor
 public class ProductController {
 
