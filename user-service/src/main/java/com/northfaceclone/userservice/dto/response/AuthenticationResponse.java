@@ -1,8 +1,6 @@
-package com.northfaceclone.userservice.dto.request;
+package com.northfaceclone.userservice.dto.response;
 
-import jakarta.validation.constraints.*;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

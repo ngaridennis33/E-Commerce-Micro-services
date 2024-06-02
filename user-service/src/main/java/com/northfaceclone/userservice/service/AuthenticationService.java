@@ -1,7 +1,7 @@
 package com.northfaceclone.userservice.service;
 
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
-import com.northfaceclone.userservice.dto.request.AuthenticationResponse;
+import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
 import com.northfaceclone.userservice.dto.request.RegistrationRequest;
 import jakarta.mail.MessagingException;
 
@@ -12,6 +12,9 @@ public interface AuthenticationService {
 
     //    Login
     AuthenticationResponse authenticate(AuthenticationRequest request);
+
+    // Activate Account
+    void activateAccount(String token) throws MessagingException;
 
     //    Logout
 

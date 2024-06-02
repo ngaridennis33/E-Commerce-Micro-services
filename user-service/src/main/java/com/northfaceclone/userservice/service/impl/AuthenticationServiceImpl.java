@@ -2,24 +2,29 @@ package com.northfaceclone.userservice.service.impl;
 
 import com.northfaceclone.userservice.dto.model.EmailTemplateName;
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
-import com.northfaceclone.userservice.dto.request.AuthenticationResponse;
+import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
 import com.northfaceclone.userservice.dto.request.RegistrationRequest;
 import com.northfaceclone.userservice.models.Token;
 import com.northfaceclone.userservice.models.User;
 import com.northfaceclone.userservice.repository.RoleRepository;
 import com.northfaceclone.userservice.repository.TokenRepository;
 import com.northfaceclone.userservice.repository.UserRepository;
+import com.northfaceclone.userservice.security.JwtService;
 import com.northfaceclone.userservice.service.AuthenticationService;
 import com.northfaceclone.userservice.service.EmailService;
 import jakarta.mail.MessagingException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -32,6 +37,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final TokenRepository tokenRepository;
     private final EmailService emailService;
     private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
     @Value("${application.mailing.frontend.activation-url}")
     private String activationUrl;
@@ -92,8 +98,35 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return codeBuilder.toString();
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request){
-        var auth = authenticationManager;
-        return null;
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+        var auth = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
+        var claims = new HashMap<String, Object>();
+        var user = ((User) auth.getPrincipal());
+        claims.put("fullName", user.fullName());
+        var jwtToken = jwtService.generateToken(claims, user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken).build();
+    }
+
+//    @Transactional
+    public void activateAccount(String token) throws MessagingException {
+        Token savedToken = tokenRepository.findByToken(token)
+                // todo: Exception has to be defined
+                .orElseThrow(() -> new RuntimeException("Invalid Token"));
+        if (LocalDateTime.now().isAfter(savedToken.getExpiresAt())) {
+            sendValidationEmail(savedToken.getUser());
+            throw new RuntimeException("Activation token has expired. A new Token has been sent to the email.");
+        }
+        var user = userRepository.findById(savedToken.getUser().getId())
+                .orElseThrow(() -> new UsernameNotFoundException("User Not found!"));
+        user.setEnabled(true);
+        userRepository.save(user);
+        savedToken.setValidatedAt(LocalDateTime.now());
+        tokenRepository.save(savedToken);
     }
 }
