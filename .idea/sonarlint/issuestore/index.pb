@@ -97,3 +97,5 @@ M
 services/user-service/pom.xml,d/c/dcf436a1e67438ce3a197b9fb53a6d6518696e4c
 é
 ^services/user-service/src/main/java/com/northfaceclone/userservice/UserServiceApplication.java,7/b/7b079258350f05699f956596a5e0352c489a347c
+ç
+]services/user-service/src/main/java/com/northfaceclone/userservice/dto/common/BaseEntity.java,d/7/d7daf1099ab4d2071bed0c0a93c78235ef7c2de6
