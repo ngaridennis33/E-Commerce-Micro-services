@@ -134,6 +134,8 @@
 - Spring Boot
 - Maven
 - PostgreSQL
+- Mongo
+- Maildev
 
 ### Architecture
 - Microservices
