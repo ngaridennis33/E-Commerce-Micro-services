@@ -38,7 +38,7 @@ public class  User extends BaseEntity implements UserDetails, Principal {
     private String avatar;
     private boolean accountLocked;
     private boolean enabled;
-    private Address address;
+//    private Address address;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;

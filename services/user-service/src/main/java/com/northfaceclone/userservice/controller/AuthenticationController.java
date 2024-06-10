@@ -23,7 +23,7 @@ public class AuthenticationController {
     // Register A new User
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<?> register(
+    public ResponseEntity<Void> register(
             @RequestBody @Valid UserRequestDTO request
     ) throws MessagingException {
         service.register(request);

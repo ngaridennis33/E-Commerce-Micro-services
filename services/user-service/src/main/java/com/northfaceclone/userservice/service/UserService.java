@@ -1,5 +1,6 @@
 package com.northfaceclone.userservice.service;
 
+import com.northfaceclone.userservice.dto.request.ResetPasswordRequestDTO;
 import com.northfaceclone.userservice.dto.request.UserRequestDTO;
 import com.northfaceclone.userservice.dto.response.UserResponseDTO;
 
@@ -19,9 +20,11 @@ public interface UserService {
     // Update User Details
     void updateUser(UserRequestDTO requestDTO);
 
-    //  Find User by Username
+    //  Find User by name
+    List<UserResponseDTO> findUserByName(String name);
 
     //  Change User Password
+    void updateUserPassword(ResetPasswordRequestDTO request);
 
     //  Delete User
     void deleteUserById(Long userId);

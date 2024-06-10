@@ -8,7 +8,7 @@ public record UserResponseDTO(
         String lastname,
         String username,
         String email,
-        String avatar,
-        Address address
+        String avatar
+//        Address address
 ) {
 }

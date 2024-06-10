@@ -1,6 +1,7 @@
 package com.northfaceclone.userservice.controller;
 
 
+import com.northfaceclone.userservice.dto.request.ResetPasswordRequestDTO;
 import com.northfaceclone.userservice.dto.request.UserRequestDTO;
 import com.northfaceclone.userservice.dto.response.UserResponseDTO;
 import com.northfaceclone.userservice.service.UserService;
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     //  Verify whether a user with a specific ID exists
-    @GetMapping("/user/{user-id}")
+    @GetMapping("/exists/{user-id}")
     public ResponseEntity<Boolean> existsById(
             @PathVariable("user-id") Long userId
     ) {
@@ -33,11 +34,20 @@ public class UserController {
     }
 
     //  Get User by ID
-    @GetMapping("/user/{user-id}")
+    @GetMapping("/{user-id}")
     public ResponseEntity<UserResponseDTO> findUserById(
             @PathVariable("user-id") Long userId
     ) {
         return ResponseEntity.ok(service.findUserById(userId));
+    }
+
+    //  Get User by Name
+    @GetMapping("name/{name}")
+    public ResponseEntity<List<UserResponseDTO>> findUserByName(
+            @PathVariable("name") String name
+    ){
+        List<UserResponseDTO> users = service.findUserByName(name);
+        return ResponseEntity.ok(users);
     }
 
     //  Update User
@@ -46,6 +56,15 @@ public class UserController {
             @RequestBody @Valid UserRequestDTO request
     ) {
         service.updateUser(request);
+        return ResponseEntity.accepted().build();
+    }
+
+    //  Update User Password
+    @PostMapping("/update-password")
+    public ResponseEntity<Void> updateUserPassword(
+            @RequestBody @Valid ResetPasswordRequestDTO requst
+    ){
+        service.updateUserPassword(requst);
         return ResponseEntity.accepted().build();
     }
 

@@ -1,9 +1,8 @@
 
 £
-java:S4144T"[Update this method so that its implementation is not identical to "getUsername" on line 55.(ú›Šøøÿÿÿÿ8óèë‰€2J$fa6874e7-ba6d-4af0-8949-a53edb11404e
-q
-java:S1948)")Make "address" transient or serializable.(ßÍ˜²ıÿÿÿÿ8äš‚Š€2J$55349e54-655e-42a4-a1b1-0031b603ef5c
+java:S4144T"[Update this method so that its implementation is not identical to "getUsername" on line 55.(ú›Šøøÿÿÿÿ8˜ùğ—€2J$07be1677-e7dc-4e58-a387-e98079a4e632
 j
-java:S1948,"'Make "roles" transient or serializable.(ÿÎÌ“8÷èë‰€2J$36d4ae8a-0435-4c1f-ad50-9ca7db986653
+java:S1948,"'Make "roles" transient or serializable.(ÿÎÌ“8šùğ—€2J$86b57985-b7b1-4e0a-919c-92731d714c63
+ƒ	java:S125)"<This block of commented-out lines of code should be removed.(šöˆûÿÿÿÿ8ÖíÜ˜€2J$26e5a693-7ce2-4e59-8d63-b4020a384a2f
 ½
-java:S62043"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8…éë‰€2J$5cae911f-7eec-4d58-86f0-694f70da1689
+java:S62043"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8Ÿùğ—€2J$097f20c4-b567-4e03-bb50-b35e9467dfa9

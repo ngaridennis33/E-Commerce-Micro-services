@@ -29,9 +29,9 @@ public record UserRequestDTO(
 
         @Pattern(regexp = "^\\+84\\d{9,10}$|^0\\d{9,10}$", message = "The phone number is not in the correct format")
         @Size(min = 10, max = 11, message = "Phone number must be between 10 and 11 characters")
-        String phoneNumber,
+        String phoneNumber
 
-        Address address
+//        Address address
 ) {
 }
 

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.springframework.validation.annotation.Validated;
+//import org.springframework.validation.annotation.Validated;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -14,7 +14,7 @@ import org.springframework.validation.annotation.Validated;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Validated
+//@Validated
 public class Address extends BaseEntity {
 
     private String country;

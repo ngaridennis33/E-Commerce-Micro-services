@@ -9,7 +9,3 @@ eureka:
 
 server:
   port: 8761
-
-
-
-
