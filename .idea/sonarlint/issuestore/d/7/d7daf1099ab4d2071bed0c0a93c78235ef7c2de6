@@ -1,11 +1,2 @@
 
-~	java:S125("<This block of commented-out lines of code should be removed.(»€Ô„8˜¥¢Áı1J$728188d4-f7a1-4228-8abe-26fc7ce6c131
-
-java:S1128"HRemove this unused import 'org.hibernate.annotations.CreationTimestamp'.(¡œøÀúÿÿÿÿ8ö‚’Àı1J$c3ff7583-dbf6-48f9-bf16-280498c6cda9
-
-java:S1128"FRemove this unused import 'org.hibernate.annotations.UpdateTimestamp'.(Ñµ¬Ûúÿÿÿÿ8ö‚’Àı1J$855e71cd-2921-42d1-9309-4f679e59ad7c
-
-java:S1128"JRemove this unused import 'org.springframework.data.annotation.CreatedBy'.(ØÚßâ8š¥¢Áı1J$5ac24488-413c-4db5-a886-91e374b77fc6
-’
-java:S1128
-"ORemove this unused import 'org.springframework.data.annotation.LastModifiedBy'.(Œ­Äà8š¥¢Áı1J$96482e89-447b-4ea4-9627-eee65c37f69b
+~	java:S125'"<This block of commented-out lines of code should be removed.(»€Ô„8˜¥¢Áı1J$1d2bff53-936f-4f9c-bec5-057aa21c9889
