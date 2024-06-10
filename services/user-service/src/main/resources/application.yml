@@ -1,29 +1,5 @@
 spring:
-  profiles:
-    active: dev
-  application:
-    name: users
-  servlet:
-    multipart:
-      max-file-size: 50MB
   config:
     import: optional:configserver:http://localhost:8888
-
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
-
-server:
-  servlet:
-    context-path: /api/v1/
-
-springdoc:
-  default-produces-media-type: application/json
-
-application:
-  config:
-    user-url: http://8092/api/vi/products
+  application:
+    name: user-service

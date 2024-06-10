@@ -28,6 +28,26 @@ spring:
         connectiontimeout: 5000
         timeout: 3000
         writetimeout: 5000
+  servlet:
+    multipart:
+      max-file-size: 50MB
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+server:
+  port: 8090
+  servlet:
+    context-path: /api/v1/
+
+springdoc:
+  default-produces-media-type: application/json
+
 application:
   security:
     jwt:
@@ -36,7 +56,3 @@ application:
   mailing:
     frontend:
       activation-url: http://localhost:4200/activate-account
-server:
-  port: 8090
-
-

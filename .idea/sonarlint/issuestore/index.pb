@@ -21,3 +21,7 @@ l
 <services/user-service/src/main/resources/application-dev.yml,2/9/298a16e9b37c65d96e223ee56651bb985e645254
 e
 5services/discovery/src/main/resources/application.yml,3/f/3fe31f60121fb48a0a634a95964519b96ee1e560
+N
+services/config-server/pom.xml,f/2/f29a944c734cc0b47102730d95018f7c717d5e3f
+‰
+Yservices/user-service/src/main/java/com/northfaceclone/userservice/client/UserClient.java,b/8/b8ce4a4e933f7e6a387d80c1ec730dea28016a94
