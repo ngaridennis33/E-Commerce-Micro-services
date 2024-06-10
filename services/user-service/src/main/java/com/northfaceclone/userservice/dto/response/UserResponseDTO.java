@@ -1,11 +1,14 @@
 package com.northfaceclone.userservice.dto.response;
 
+import com.northfaceclone.userservice.models.Address;
+
 public record UserResponseDTO(
         Long id,
-        String first_name,
-        String last_name,
-        String user_name,
+        String firstname,
+        String lastname,
+        String username,
         String email,
-        String avatar
+        String avatar,
+        Address address
 ) {
 }

@@ -4,12 +4,13 @@ import com.northfaceclone.userservice.dto.common.EmailTemplateName;
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
 import com.northfaceclone.userservice.dto.request.UserRequestDTO;
 import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
+import com.northfaceclone.userservice.dto.response.UserResponseDTO;
 import com.northfaceclone.userservice.mapper.UserMapper;
 import com.northfaceclone.userservice.models.Token;
 import com.northfaceclone.userservice.models.User;
 import com.northfaceclone.userservice.repository.RoleRepository;
 import com.northfaceclone.userservice.repository.TokenRepository;
-import com.northfaceclone.userservice.repository.UserRepository;
+import com.northfaceclone.userservice.repository.AuthRepository;
 import com.northfaceclone.userservice.security.JwtService;
 import com.northfaceclone.userservice.service.AuthenticationService;
 import com.northfaceclone.userservice.service.EmailService;
@@ -17,7 +18,6 @@ import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,6 +28,7 @@ import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
+    private final AuthRepository userRepository;
     private final TokenRepository tokenRepository;
     private final EmailService emailService;
     private final AuthenticationManager authenticationManager;
@@ -129,27 +130,4 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         tokenRepository.save(savedToken);
     }
 
-    public void updateUser(UserRequestDTO request){
-        var user = userRepository.findById(request.id())
-                .orElseThrow(()-> new RuntimeException(
-                        String.format("Cannot update user:: No User Found with the provided ID:: %s", request.id())
-                ));
-        mergeUser(user, request);
-        userRepository.save(user);
-    }
-
-    private void mergeUser(User user, UserRequestDTO request){
-        if(StringUtils.isNotBlank(request.firstname())){
-            user.setFirstname(request.firstname());
-        }
-        if(StringUtils.isNotBlank(request.lastname())){
-            user.setFirstname(request.lastname());
-        }
-        if(StringUtils.isNotBlank(request.email())){
-            user.setFirstname(request.email());
-        }
-        if(request.address() != null){
-            user.setAddress(request.address());
-        }
-    }
 }

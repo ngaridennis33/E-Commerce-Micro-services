@@ -1,21 +1,29 @@
 package com.northfaceclone.userservice.service;
 
+import com.northfaceclone.userservice.dto.request.UserRequestDTO;
+import com.northfaceclone.userservice.dto.response.UserResponseDTO;
+
+import java.util.List;
+
 public interface UserService {
 
-//    Register User
+    //  Find all Users
+    List<UserResponseDTO> findAllUsers();
 
-//    Login
+    //  Check if User exists
+    Boolean existsById(Long id);
 
-//    Logout
+    //  Find User By Id
+    UserResponseDTO findUserById(Long userId);
 
-//    Change Password
+    // Update User Details
+    void updateUser(UserRequestDTO requestDTO);
 
-//    delete
+    //  Find User by Username
 
-//    FindById
+    //  Change User Password
 
-//    Find by Username
-
-//    Find All users
+    //  Delete User
+    void deleteUserById(Long userId);
 
 }

@@ -1,6 +1,7 @@
 package com.northfaceclone.userservice.mapper;
 
 import com.northfaceclone.userservice.dto.request.UserRequestDTO;
+import com.northfaceclone.userservice.dto.response.UserResponseDTO;
 import com.northfaceclone.userservice.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,17 @@ public class UserMapper {
                 .password(request.password())
                 .phoneNumber(request.phoneNumber())
                 .build();
+    }
+
+    public UserResponseDTO fromUser(User user){
+        return new UserResponseDTO(
+                user.getId(),
+                user.getFirstname(),
+                user.getLastname(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getAvatar(),
+                user.getAddress()
+        );
     }
 }

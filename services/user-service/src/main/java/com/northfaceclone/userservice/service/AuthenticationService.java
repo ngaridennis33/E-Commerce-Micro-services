@@ -3,7 +3,10 @@ package com.northfaceclone.userservice.service;
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
 import com.northfaceclone.userservice.dto.request.UserRequestDTO;
 import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
+import com.northfaceclone.userservice.dto.response.UserResponseDTO;
 import jakarta.mail.MessagingException;
+
+import java.util.List;
 
 public interface AuthenticationService {
 
@@ -16,18 +19,9 @@ public interface AuthenticationService {
     // Activate Account
     void activateAccount(String token) throws MessagingException;
 
-    //    Logout
+    //  Logout
 
-    //    Change Password
+    //  Password Reset
 
-    //    Update user details
-    void updateUser(UserRequestDTO requestDTO);
-
-    //    delete
-
-    //    FindById
-
-    //    Find by Username
-
-    //    Find All users
+    //  Refresh Tokens
 }

@@ -67,3 +67,13 @@ bservices/user-service/src/main/java/com/northfaceclone/userservice/dto/request/
 eservices/user-service/src/main/java/com/northfaceclone/userservice/dto/common/BusinessErrorCodes.java,f/1/f116c5e6d0b19097cab830c72de297fb3cfd7bb9
 –
 fservices/user-service/src/main/java/com/northfaceclone/userservice/handler/GlobalExceptionHandler.java,c/c/cc2b284c87795c55840f64699808b921c87b62be
+–
+fservices/user-service/src/main/java/com/northfaceclone/userservice/dto/response/ExceptionResponse.java,6/5/657fb882b36132957d5b57519a197521b321ea6d
+‘
+aservices/user-service/src/main/java/com/northfaceclone/userservice/controller/UserController.java,1/e/1e04ff0d6df1ac6b1c6e9cccb4c7917a10e7d9e2
+”
+dservices/user-service/src/main/java/com/northfaceclone/userservice/service/impl/UserServiceImpl.java,4/3/43dd7072ed258a6b4a0c157b4b76549fcc0d34bf
+‘
+aservices/user-service/src/main/java/com/northfaceclone/userservice/repository/UserRepository.java,8/7/8749d261e943339edb9b76791f2b078128501eef
+‘
+aservices/user-service/src/main/java/com/northfaceclone/userservice/repository/AuthRepository.java,9/3/93ffeea64e729f6f99c8f7501acd3cb7f96dcc09
