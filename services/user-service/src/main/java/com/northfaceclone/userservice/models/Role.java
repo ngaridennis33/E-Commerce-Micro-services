@@ -2,7 +2,6 @@ package com.northfaceclone.userservice.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.northfaceclone.userservice.dto.common.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;

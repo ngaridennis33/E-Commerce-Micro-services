@@ -2,14 +2,11 @@ package com.northfaceclone.userservice.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.NaturalId;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,20 +17,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_user")
-@EntityListeners(AuditingEntityListener.class)
-public class  User implements UserDetails, Principal {
+@Table(name = "customer")
+public class  User extends BaseEntity implements UserDetails, Principal {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false, updatable = false)
-    private Long id;
     private String firstname;
     private String lastname;
     @NaturalId
@@ -46,17 +38,10 @@ public class  User implements UserDetails, Principal {
     private String avatar;
     private boolean accountLocked;
     private boolean enabled;
+    private Address address;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
-
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdDate;
-
-    @LastModifiedDate
-    @Column(insertable = false)
-    private LocalDateTime lastModifiedDate;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

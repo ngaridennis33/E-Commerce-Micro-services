@@ -15,9 +15,12 @@ public enum BusinessErrorCodes {
 
     INCORRECT_CURRENT_PASSWORD(400, BAD_REQUEST, "Current password is incorrect"),
 
+    BAD_CREDENTIALS(401, UNAUTHORIZED, "Email and/or password is incorrect"),
+
     ACCOUNT_DISABLED(403, FORBIDDEN, "User Account is Disabled"),
 
-    BAD_CREDENTIALS(401, UNAUTHORIZED, "Email and/or password is incorrect");
+    ACCOUNT_NOT_FOUND(404, NOT_FOUND, "User Account Does NOT exist");
+
 
     @Getter
     private final int code;
@@ -30,7 +33,6 @@ public enum BusinessErrorCodes {
         this.code = code;
         this.httpStatus = httpStatus;
         this.description = description;
-
    }
 
 }

@@ -1,16 +1,12 @@
 package com.northfaceclone.userservice.models;
 
-import com.northfaceclone.userservice.dto.common.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import java.time.LocalDateTime;
+import org.springframework.validation.annotation.Validated;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -18,16 +14,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
+@Validated
 public class Address extends BaseEntity {
 
-    private String city;
     private String country;
+    private String city;
+    private String street;
+    private String zipcode;
     private String addressLine1;
     private String addressLine2;
     private String telephone;
     private String mobile;
-
-    @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
-    private User user;
 }

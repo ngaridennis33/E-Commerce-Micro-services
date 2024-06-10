@@ -1,0 +1,9 @@
+
+£
+java:S4144T"[Update this method so that its implementation is not identical to "getUsername" on line 55.(ú›Šøøÿÿÿÿ8óèë‰€2J$e5775c8c-b794-44ed-bb9f-9d3ed5db9d3a
+K
+java:S1948)")Make "address" transient or serializable.(ßÍ˜²ıÿÿÿÿ8äš‚Š€2
+j
+java:S1948,"'Make "roles" transient or serializable.(ÿÎÌ“8÷èë‰€2J$fee9ad14-b85e-4c24-8b3c-76740430395c
+½
+java:S62043"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8…éë‰€2J$10d76686-9274-4d3b-a4a7-8815bd51b2bf

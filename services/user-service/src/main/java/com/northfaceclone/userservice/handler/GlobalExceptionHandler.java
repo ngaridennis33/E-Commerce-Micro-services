@@ -63,6 +63,20 @@ public class GlobalExceptionHandler {
                 );
     }
 
+    // Handle NOT_FOUND Error
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ExceptionResponse> handleException(RuntimeException exp) {
+        return ResponseEntity
+                .status(NOT_FOUND)
+                .body(
+                        ExceptionResponse.builder()
+                                .businessErrorCode(ACCOUNT_NOT_FOUND.getCode())
+                                .businessErrorDescription(ACCOUNT_NOT_FOUND.getDescription())
+                                .error(ACCOUNT_NOT_FOUND.getDescription())
+                                .build()
+                );
+    }
+
     // Handle Server Error
     @ExceptionHandler(MessagingException.class)
     public ResponseEntity<ExceptionResponse> handleException(MessagingException exp) {

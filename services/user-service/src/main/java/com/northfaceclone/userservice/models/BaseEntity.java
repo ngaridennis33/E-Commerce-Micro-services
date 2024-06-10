@@ -1,4 +1,4 @@
-package com.northfaceclone.userservice.dto.common;
+package com.northfaceclone.userservice.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,13 +33,5 @@ public class BaseEntity {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
-
-//    @CreatedBy
-//    @Column(nullable = false, updatable = false)
-//    private Integer createdBy;
-//
-//    @LastModifiedBy
-//    @Column(insertable = false)
-//    private Integer lastModifiedBy;
 
 }

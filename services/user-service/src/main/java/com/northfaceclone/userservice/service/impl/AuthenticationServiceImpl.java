@@ -2,8 +2,9 @@ package com.northfaceclone.userservice.service.impl;
 
 import com.northfaceclone.userservice.dto.common.EmailTemplateName;
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
+import com.northfaceclone.userservice.dto.request.UserRequestDTO;
 import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
-import com.northfaceclone.userservice.dto.request.RegistrationRequest;
+import com.northfaceclone.userservice.mapper.UserMapper;
 import com.northfaceclone.userservice.models.Token;
 import com.northfaceclone.userservice.models.User;
 import com.northfaceclone.userservice.repository.RoleRepository;
@@ -14,7 +15,9 @@ import com.northfaceclone.userservice.service.AuthenticationService;
 import com.northfaceclone.userservice.service.EmailService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -37,23 +40,21 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final EmailService emailService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final UserMapper userMapper;
 
     @Value("${application.mailing.frontend.activation-url}")
     private String activationUrl;
 
-    public void register(RegistrationRequest request) throws MessagingException {
+    public void register(UserRequestDTO request) throws MessagingException {
         var userRole = roleRepository.findByName("USER")
                 // todo - Better exception Handling
                 .orElseThrow(() -> new IllegalArgumentException("ROLE USER was not Initialized"));
-        var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .enabled(false)
-                .accountLocked(false)
-                .roles(List.of(userRole))
-                .build();
+        var user = userMapper.toUser(request);
+        user.setRoles(List.of(userRole));
+        user.setEnabled(false);
+        user.setAccountLocked(false);
+        user.setPassword(passwordEncoder.encode(request.password()));
+
         userRepository.save(user);
         sendValidationEmail(user);
     }
@@ -112,7 +113,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .token(jwtToken).build();
     }
 
-//    @Transactional
     public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
                 // todo: Exception has to be defined
@@ -127,5 +127,29 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         userRepository.save(user);
         savedToken.setValidatedAt(LocalDateTime.now());
         tokenRepository.save(savedToken);
+    }
+
+    public void updateUser(UserRequestDTO request){
+        var user = userRepository.findById(request.id())
+                .orElseThrow(()-> new RuntimeException(
+                        String.format("Cannot update user:: No User Found with the provided ID:: %s", request.id())
+                ));
+        mergeUser(user, request);
+        userRepository.save(user);
+    }
+
+    private void mergeUser(User user, UserRequestDTO request){
+        if(StringUtils.isNotBlank(request.firstname())){
+            user.setFirstname(request.firstname());
+        }
+        if(StringUtils.isNotBlank(request.lastname())){
+            user.setFirstname(request.lastname());
+        }
+        if(StringUtils.isNotBlank(request.email())){
+            user.setFirstname(request.email());
+        }
+        if(request.address() != null){
+            user.setAddress(request.address());
+        }
     }
 }

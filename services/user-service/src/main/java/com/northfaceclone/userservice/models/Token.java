@@ -1,7 +1,6 @@
 package com.northfaceclone.userservice.models;
 
 
-import com.northfaceclone.userservice.dto.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
