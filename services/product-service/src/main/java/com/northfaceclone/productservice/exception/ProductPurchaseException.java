@@ -1,4 +1,4 @@
-package com.northfaceclone.productservice.error.exception;
+package com.northfaceclone.productservice.exception;
 
 public class ProductPurchaseException extends RuntimeException {
 

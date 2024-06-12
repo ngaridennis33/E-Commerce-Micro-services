@@ -23,8 +23,7 @@ public class Product extends BaseEntity {
     private String description;
     private double availableQuantity;
     private BigDecimal price;
-    private int discount;
     @ManyToOne
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "category_id")
     private Category category;
 }
