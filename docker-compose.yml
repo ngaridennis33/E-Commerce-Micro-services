@@ -1,5 +1,5 @@
 services:
-#  Postgres database
+  # Postgres database
   postgres:
     image: postgres:latest
     container_name: ms_pg_sql
@@ -16,7 +16,7 @@ services:
       - microservices-net
     restart: unless-stopped
 
-# PG Admin
+  # PG Admin
   pgadmin:
     container_name: ms_pgadmin
     image: dpage/pgadmin4
@@ -32,7 +32,7 @@ services:
       - microservices-net
     restart: unless-stopped
 
-# Mongo Database
+  # Mongo Database
   mongodb:
     container_name: ms_mongo_db
     image: mongo:latest
@@ -44,7 +44,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: denrax
       MONGO_INITDB_ROOT_PASSWORD: denrax
 
-# Mongo Express
+  # Mongo Express
   mongo-express:
     container_name: ms_mongo_express
     image: mongo-express
@@ -56,13 +56,44 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: denrax
       ME_CONFIG_MONGODB_SERVER: mongodb
 
-# Mail Dev
+  # zookeeper
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLINT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+    networks:
+      - microservices-net
+
+  # Kafka
+  kafka:
+    image: confluentinc//cp-kafka:latest
+    container_name: ms_kafka
+    ports:
+      - 9092:9082
+    depends_on:
+      - zookeeper
+
+  # Mail Dev
   mail-dev:
     container_name: ms_mail_dev
     image: maildev/maildev
     ports:
       - 1080:1080
       - 1025:1025
+
+  # Kafka Environments
+  environment:
+    KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+    KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+    KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
 
 # Networks
 networks:
