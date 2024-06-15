@@ -43,6 +43,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: denrax
       MONGO_INITDB_ROOT_PASSWORD: denrax
+    networks:
+      - microservices-net
+
 
   # Mongo Express
   mongo-express:
@@ -55,6 +58,8 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: denrax
       ME_CONFIG_MONGODB_ADMINPASSWORD: denrax
       ME_CONFIG_MONGODB_SERVER: mongodb
+    networks:
+      - microservices-net
 
   # zookeeper
   zookeeper:
@@ -62,7 +67,7 @@ services:
     container_name: zookeeper
     environment:
       ZOOKEEPER_SERVER_ID: 1
-      ZOOKEEPER_CLINT_PORT: 2181
+      ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - 22181:2181
@@ -71,7 +76,7 @@ services:
 
   # Kafka
   kafka:
-    image: confluentinc//cp-kafka:latest
+    image: confluentinc/cp-kafka:latest
     container_name: ms_kafka
     ports:
       - 9092:9082
@@ -84,6 +89,8 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+    networks:
+      - microservices-net
 
   # Mail Dev
   mail-dev:
@@ -92,6 +99,8 @@ services:
     ports:
       - 1080:1080
       - 1025:1025
+    networks:
+      - microservices-net
 
 # Networks
 networks:

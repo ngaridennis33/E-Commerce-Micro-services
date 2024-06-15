@@ -1,13 +1,14 @@
 package com.northface_clone.orderservice.mapper;
 
 import com.northface_clone.orderservice.dto.request.OrderRequestDTO;
+import com.northface_clone.orderservice.dto.response.OrderResponseDTO;
 import com.northface_clone.orderservice.models.Order;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrderMapper {
 
-    public Order toOrder(OrderRequestDTO request){
+    public Order toOrder(OrderRequestDTO request) {
 
         return Order.builder()
                 .id(request.id())
@@ -18,5 +19,14 @@ public class OrderMapper {
                 .build();
     }
 
+    public OrderResponseDTO fromOrder(Order order) {
 
+        return new OrderResponseDTO(
+                order.getId(),
+                order.getReference(),
+                order.getTotalAmount(),
+                order.getPaymentMethod(),
+                order.getCustomerId()
+        );
+    }
 }

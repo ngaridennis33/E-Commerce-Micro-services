@@ -15,7 +15,8 @@ public class OrderLineServiceImpl implements OrderLineService {
     private final OrderLineMapper mapper;
 
 
-    public void saveOrderLine(OrderLineRequestDTO request){
-
+    public Long saveOrderLine(OrderLineRequestDTO request){
+        var order = mapper.toOrderLine(request);
+        return repository.save(order).getId();
     }
 }
