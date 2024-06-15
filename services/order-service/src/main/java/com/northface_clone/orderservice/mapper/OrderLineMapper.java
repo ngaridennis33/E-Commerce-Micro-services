@@ -1,6 +1,7 @@
 package com.northface_clone.orderservice.mapper;
 
 import com.northface_clone.orderservice.dto.request.OrderLineRequestDTO;
+import com.northface_clone.orderservice.dto.response.OrderLineResponseDTO;
 import com.northface_clone.orderservice.models.Order;
 import com.northface_clone.orderservice.models.OrderLine;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,12 @@ public class OrderLineMapper {
                         .build())
                 .productId(request.productId())
                 .build();
+    }
+
+    public OrderLineResponseDTO toOrderLineResponse(OrderLine orderLine) {
+        return new OrderLineResponseDTO(
+                orderLine.getId(),
+                orderLine.getQuantity()
+        );
     }
 }
