@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@z
 @SuperBuilder
 @Entity()
 public class Product extends BaseEntity {
