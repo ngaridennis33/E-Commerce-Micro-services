@@ -187,3 +187,5 @@ iservices/order-service/src/main/java/com/northface_clone/orderservice/handler/G
 eservices/order-service/src/main/java/com/northface_clone/orderservice/dto/response/ErrorResponse.java,a/d/ad88fa9dc4cae7da1d7ca74123798cf8945dade8
 ˜
 hservices/order-service/src/main/java/com/northface_clone/orderservice/dto/response/ErrorResponseDTO.java,b/5/b58fbb80655c6633e1ce47fc7cce559a79024e38
+P
+ services/payment-service/pom.xml,2/4/2435579a6e929654de476c0694c33ac8c4e0f152
