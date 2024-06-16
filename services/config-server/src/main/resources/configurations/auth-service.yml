@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth-service
+    username: postgres
+    password: password123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: localhost
+    port: 1025
+    username: denrax
+    password: denrax
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+  servlet:
+    multipart:
+      max-file-size: 50MB
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+server:
+  port: 8090
+
+springdoc:
+  default-produces-media-type: application/json
+
+application:
+  security:
+    jwt:
+      secret-key: 271b3d5cfc9f3bbb0e0e42a4ebd6f397f757258aefd7e63fcac85d7ebe612cef
+      expiration: 864000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account

@@ -1,4 +1,4 @@
-package com.northfaceclone.userservice.entity;
+package com.northfaceclone.authservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
