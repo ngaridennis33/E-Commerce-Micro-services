@@ -14,14 +14,15 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     private final UserService service;
 
     //  Get All Users
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<List<UserResponseDTO>> findAll() {
+
         return ResponseEntity.ok(service.findAllUsers());
     }
 
@@ -42,7 +43,7 @@ public class UserController {
     }
 
     //  Get User by Name
-    @GetMapping("name/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<List<UserResponseDTO>> findUserByName(
             @PathVariable("name") String name
     ){
