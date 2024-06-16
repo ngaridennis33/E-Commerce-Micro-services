@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/north-face-clone-microservice.iml" filepath="$PROJECT_DIR$/north-face-clone-microservice.iml" />
     </modules>
   </component>

@@ -79,7 +79,7 @@ services:
     image: confluentinc/cp-kafka:latest
     container_name: ms_kafka
     ports:
-      - 9092:9082
+      - 9092:9092
     depends_on:
       - zookeeper
     environment:
