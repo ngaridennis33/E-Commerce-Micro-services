@@ -1,9 +1,0 @@
-
-i	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ìü‰Ú8âÏÜÿ2
-Â
-java:S1598"…This file "UserServiceImpl.java" should be located in "com/northfaceclone/userservice/service/impl" directory, not in "/home/denrax/Desktop/Northface/north-face-clone-microservice/services/auth-service/src/main/java/com/northfaceclone/authservice/service/impl".(ù„ä¤J$73a668b5-38dd-4867-b8ba-7519e27e7ebe
-¶
-java:S6204!"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹J$a2b6c696-27dd-456b-82d1-105056c1818e
-|	java:S125E"<This block of commented-out lines of code should be removed.(ó‰ĞôıÿÿÿÿJ$add9f001-1ddc-47d6-9362-665d1ed1c498
-¶
-java:S6204O"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹J$2239b1f5-f9f7-40e8-82f3-5a39c5bf76b7
