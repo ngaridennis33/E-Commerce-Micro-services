@@ -1,8 +1,8 @@
 
-}
-java:S4144T"[Update this method so that its implementation is not identical to "getUsername" on line 55.(ú›Šøøÿÿÿÿ8‹‘õé2
-D
-java:S1948,"'Make "roles" transient or serializable.(ÿÎÌ“8¡‘õé2
-]	java:S125)"<This block of commented-out lines of code should be removed.(šöˆûÿÿÿÿ8Ä‘õé2
-—
-java:S62043"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8Ü‘õé2
+£
+java:S4144T"[Update this method so that its implementation is not identical to "getUsername" on line 55.(ú›Šøøÿÿÿÿ8‹‘õé2J$e5ddf6ef-3e92-40bb-bb4f-4c8beee8eb79
+j
+java:S1948,"'Make "roles" transient or serializable.(ÿÎÌ“8¡‘õé2J$768c1624-a7e7-430f-8533-cebaf2e9a183
+ƒ	java:S125)"<This block of commented-out lines of code should be removed.(šöˆûÿÿÿÿ8Ä‘õé2J$613c20c3-cfff-4580-bbba-5be9eb9a51f3
+½
+java:S62043"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8Ü‘õé2J$c1589d29-61d2-44c1-b88f-f56027d1bbd2
