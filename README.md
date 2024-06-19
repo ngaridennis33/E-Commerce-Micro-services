@@ -36,16 +36,23 @@
       Example Tools: ELK Stack (Elasticsearch, Logstash, Kibana), Prometheus, Grafana.
 
 #### Services
-* User Service
-    - Responsibilities: Managing user accounts, authentication, authorization, user profiles, and user settings.
+* Auth Service
+    - Responsibilities: Managing user accounts, authentication, authorization, token management.
       Endpoints:
-        - POST /users - Register a new user.
+        - POST /auth/register - Register a new user.
+        - POST /auth/activate - Activate Account
+        - POST /auth/login - Sign in user
+        - PUT /auth/logout - Sign out user
+        - POST /auth/reset-password - Password Reset
+        - POST /auth/refresh-token - Refresh Token
+* User Service
+    - Responsibilities: Managing user related data and operations and managing user profiles.
+      Endpoints:
+        - GET /users - Get all users
         - GET /users/{id} - Retrieve user details.
         - PUT /users/{id} - Update user details.
+        - GET /users/name/{name} - Get user by name
         - DELETE /users/{id} - Delete user account.
-        - POST /auth/login - User login.
-        - POST /auth/logout - User logout.
-
 * Product Service
     - Responsibilities: Managing product catalog, including product listings, details, categories, and inventory.
       Endpoints:
@@ -59,7 +66,8 @@
     - Responsibilities: Managing customer orders, order status, and order history.
       Endpoints:
         - POST /orders - Create a new order.
-        - GET /orders/{id} - Retrieve order details.
+        - GET /orders - Retrieve all orders
+        - GET /order/{order-id} - Retrieve order-lines
         - GET /orders/user/{userId} - Retrieve orders for a user.
         - PUT /orders/{id} - Update order status.
         - DELETE /orders/{id} - Cancel an order.
@@ -118,15 +126,17 @@
 
 ## Database architecture
 
-![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/ER-Diagram.png)
+![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/micro-services-entity-domains.png)
 
 ## Tables in each database service
-1. User Service: account, user, user_address, wishlist
-2. Product Service:	products, categories, sub_categories, product_inventory, discount
-3. Order Service: order_details, order_item
-4. Cart Service: cart
-5. Payment Service:	payment_details
-6. Shipping Service: user_address (shared with User Service)
+1. Auth Service: account, Token, user_role, Role
+2. User Service: User, Address
+3. Product Service:	products, categories
+4. Order Service: order, order_line
+5. Cart Service: cart
+6. Payment Service:	payment_details
+7. Notification service: Notification collection
+7. Shipping Service: user_address (shared with User Service)
 
 # Technologies and Concepts Used
 
@@ -136,14 +146,15 @@
 - PostgreSQL
 - Mongo
 - Maildev
-
-### Architecture
-- Microservices
-- API Gateway Pattern: An `API Gateway` on the edge of the microservices.
-- Service Registration and Discovery: using `Netflix Eureka` for service registration and discovery.
+- kafka
+- Zipkin
+- JWT
+- Eureka
 
 ### Security
 - JWT Tokens: Used for authentication and authorization.
+### Auth Architecture
+![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/Auth-architecture.png)
 
 ### QA/Testing
 - JUnit
@@ -159,6 +170,8 @@
 
 ### Event-Driven Messaging
 - Kafka
+#### Architecture
+![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/micro-services-entity-domains.png)
 
 ### Observability
 - Grafana: Data visualization.
@@ -166,3 +179,6 @@
 - Grafana Loki: `Logging`.
 - Grafana Tempo and Zipkin: `Distributed Tracing`.
 - Prometheus: `Metrics`.
+
+### Status
+Application  status: BETA
