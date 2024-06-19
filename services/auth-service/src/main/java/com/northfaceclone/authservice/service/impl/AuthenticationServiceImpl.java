@@ -1,17 +1,17 @@
 package com.northfaceclone.authservice.service.impl;
 
 import com.northfaceclone.authservice.entity.Token;
-import com.northfaceclone.authservice.entity.User;
-import com.northfaceclone.authservice.repository.AuthRepository;
+import com.northfaceclone.authservice.entity.Account;
+import com.northfaceclone.authservice.repository.AccountRepository;
 import com.northfaceclone.authservice.repository.RoleRepository;
 import com.northfaceclone.authservice.repository.TokenRepository;
 import com.northfaceclone.authservice.security.JwtService;
 import com.northfaceclone.authservice.service.AuthenticationService;
 import com.northfaceclone.userservice.dto.common.EmailTemplateName;
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
-import com.northfaceclone.userservice.dto.request.UserRequestDTO;
+import com.northfaceclone.userservice.dto.request.AccountRequestDTO;
 import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
-import com.northfaceclone.authservice.mapper.UserMapper;
+import com.northfaceclone.authservice.mapper.AccountMapper;
 import com.northfaceclone.userservice.service.EmailService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
@@ -33,17 +33,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
-    private final AuthRepository repository;
+    private final AccountRepository repository;
     private final TokenRepository tokenRepository;
     private final EmailService emailService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
-    private final UserMapper userMapper;
+    private final AccountMapper userMapper;
 
     @Value("${application.mailing.frontend.activation-url}")
     private String activationUrl;
 
-    public void register(UserRequestDTO request) throws MessagingException {
+    public void register(AccountRequestDTO request) throws MessagingException {
         var userRole = roleRepository.findByName("USER")
                 // todo - Better exception Handling
                 .orElseThrow(() -> new IllegalArgumentException("ROLE USER was not Initialized"));
@@ -57,7 +57,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         sendValidationEmail(user);
     }
 
-    private void sendValidationEmail(User user) throws MessagingException {
+    private void sendValidationEmail(Account user) throws MessagingException {
         var newToken = generateAndSaveActivationToken(user);
         // Send Email
         emailService.sendEmail(
@@ -71,7 +71,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     }
 
-    private String generateAndSaveActivationToken(User user) {
+    private String generateAndSaveActivationToken(Account user) {
 
         //Generate Token
         String generatedToken = generateActivationCode(6);
@@ -104,7 +104,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 )
         );
         var claims = new HashMap<String, Object>();
-        var user = ((User) auth.getPrincipal());
+        var user = ((Account) auth.getPrincipal());
         claims.put("fullName", user.getFullName());
         var jwtToken = jwtService.generateToken(claims, user);
         return AuthenticationResponse.builder()

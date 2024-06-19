@@ -1,6 +1,6 @@
 package com.northfaceclone.authservice.dto.response;
 
-public record UserResponseDTO(
+public record AccountResponseDTO(
         Integer id,
         String firstname,
         String lastname,

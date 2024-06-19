@@ -2,7 +2,7 @@ package com.northfaceclone.userservice.dto.request;
 
 import jakarta.validation.constraints.*;
 
-public record UserRequestDTO(
+public record AccountRequestDTO(
         Long id,
 
         @NotEmpty(message = "Firstname is mandatory")

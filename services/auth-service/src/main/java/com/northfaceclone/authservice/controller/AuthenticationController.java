@@ -1,7 +1,7 @@
 package com.northfaceclone.authservice.controller;
 
 import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
-import com.northfaceclone.userservice.dto.request.UserRequestDTO;
+import com.northfaceclone.userservice.dto.request.AccountRequestDTO;
 import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
 import com.northfaceclone.userservice.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,7 +24,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<Void> register(
-            @RequestBody @Valid UserRequestDTO request
+            @RequestBody @Valid AccountRequestDTO request
     ) throws MessagingException {
         service.register(request);
         return ResponseEntity.accepted().build();

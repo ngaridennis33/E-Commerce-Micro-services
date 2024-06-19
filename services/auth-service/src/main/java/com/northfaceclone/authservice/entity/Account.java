@@ -1,9 +1,6 @@
 package com.northfaceclone.authservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,8 +10,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -22,27 +21,30 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "auth")
-public class  User extends BaseEntity implements UserDetails {
+public class Account extends BaseEntity implements UserDetails, Principal {
 
+    @Column(unique = true)
     private String firstname;
-
     private String lastname;
-
     private String email;
-
     private String password;
+    private boolean accountLocked;
+    private boolean enabled;
 
-    private String phoneNumber;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
 
-    private String avatar;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @Override
+    public String getName() {
+        return email;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return this.roles
+                .stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -62,7 +64,7 @@ public class  User extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !accountLocked;
     }
 
     @Override
@@ -72,6 +74,10 @@ public class  User extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
+    }
+
+    private String fullName(){
+        return "firstname" + " " + "lastname";
     }
 }

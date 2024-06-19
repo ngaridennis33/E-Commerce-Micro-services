@@ -1,6 +1,6 @@
 package com.northfaceclone.authservice.security;
 
-import com.northfaceclone.authservice.repository.AuthRepository;
+import com.northfaceclone.authservice.repository.AccountRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final AuthRepository repository;
+    private final AccountRepository repository;
 
     @Override
     @Transactional

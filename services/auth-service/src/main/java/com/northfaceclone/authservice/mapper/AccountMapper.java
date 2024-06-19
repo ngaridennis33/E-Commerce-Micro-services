@@ -1,36 +1,35 @@
 package com.northfaceclone.authservice.mapper;
 
-import com.northfaceclone.authservice.entity.User;
-import com.northfaceclone.userservice.dto.request.UserRequestDTO;
-import com.northfaceclone.authservice.dto.response.UserResponseDTO;
+import com.northfaceclone.authservice.entity.Account;
+import com.northfaceclone.userservice.dto.request.AccountRequestDTO;
+import com.northfaceclone.authservice.dto.response.AccountResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserMapper {
+public class AccountMapper {
 
-    public User toUser(UserRequestDTO request){
+    public Account toUser(AccountRequestDTO request){
         if (request == null){
             return null;
         }
-        return User.builder()
+        return Account.builder()
                 .firstname(request.firstname())
                 .lastname(request.lastname())
                 .email(request.email())
                 .password(request.password())
-                .phoneNumber(request.phoneNumber())
                 .build();
     }
 
-    public UserResponseDTO fromUser(User user){
-        return new UserResponseDTO(
+    public AccountResponseDTO fromUser(Account user){
+        return new AccountResponseDTO(
                 user.getId(),
                 user.getFirstname(),
                 user.getLastname(),
                 user.getUsername(),
-                user.getEmail(),
-                user.getAvatar()
+                user.getEmail()
+
         );
     }
 }

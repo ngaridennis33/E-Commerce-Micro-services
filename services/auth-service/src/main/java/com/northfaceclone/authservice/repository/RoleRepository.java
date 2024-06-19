@@ -1,5 +1,6 @@
 package com.northfaceclone.authservice.repository;
 
+import com.northfaceclone.authservice.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
