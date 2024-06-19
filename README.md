@@ -1,6 +1,11 @@
-# REST Microservices architecture for E-commerce
+# RESTful Microservices Architecture for E-Commerce with Spring Boot
 
-> Implementation of a REST Microservices in an E-Commerce with Spring boot, Cloud and multiple modules.
+## Introduction
+
+- This project leverages Spring Boot to implement a microservices architecture tailored for e-commerce platforms.
+  This architecture enables modular, scalable, and maintainable services, each responsible for distinct functionalities
+  within the e-commerce ecosystem. The project incorporates intuitive, reactive programming and event-driven design
+  patterns, following industry-best coding practices to enhance functionality and performance.
 
 ### Table of contents
 
@@ -12,11 +17,14 @@
 - [Status](#status)
 - [Contact](#contact)
 
-### Project architecture
+### Project global architecture
+
 ![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/Global-architecture.png)
 
 ### Project-structure
-#### Microservices Overview:
+
+- The project is divided into three major categories. The core structure, the services and the supporting microservices.
+
 ### Core
 
 * API Gateway:
@@ -36,6 +44,7 @@
       Example Tools: ELK Stack (Elasticsearch, Logstash, Kibana), Prometheus, Grafana.
 
 #### Services
+
 * Auth Service
     - Responsibilities: Managing user accounts, authentication, authorization, token management.
       Endpoints:
@@ -128,16 +137,6 @@
 
 ![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/micro-services-entity-domains.png)
 
-## Tables in each database service
-1. Auth Service: account, Token, user_role, Role
-2. User Service: User, Address
-3. Product Service:	products, categories
-4. Order Service: order, order_line
-5. Cart Service: cart
-6. Payment Service:	payment_details
-7. Notification service: Notification collection
-7. Shipping Service: user_address (shared with User Service)
-
 # Technologies and Concepts Used
 
 - Java 17
@@ -152,11 +151,15 @@
 - Eureka
 
 ### Security
+
 - JWT Tokens: Used for authentication and authorization.
+
 ### Auth Architecture
+
 ![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/Auth-architecture.png)
 
 ### QA/Testing
+
 - JUnit
 - Mockito
 - Unit Testing
@@ -164,16 +167,20 @@
 - TestContainers
 
 ### CI/CD
+
 - Maven
 - Docker
 - GitHub Actions: Automatically builds, tests and publishes Docker images to Docker Hub.
 
 ### Event-Driven Messaging
+
 - Kafka
 #### Architecture
-![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/micro-services-entity-domains.png)
+
+![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/kafka-broker.png)
 
 ### Observability
+
 - Grafana: Data visualization.
 - OpenTelemetry: Collect metrics, traces, and logs.
 - Grafana Loki: `Logging`.
@@ -181,4 +188,5 @@
 - Prometheus: `Metrics`.
 
 ### Status
-Application  status: BETA
+
+Application status: BETA
