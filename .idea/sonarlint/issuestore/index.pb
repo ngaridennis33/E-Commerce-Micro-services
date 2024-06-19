@@ -305,5 +305,22 @@ fservices/auth-service/src/main/java/com/northfaceclone/authservice/dto/response
 dservices/auth-service/src/main/java/com/northfaceclone/authservice/dto/response/UserResponseDTO.java,9/0/90b32138e7d54b7dc045486e06685b9845234f58
 M
 services/auth-service/pom.xml,7/2/72a7de980c3c1600ffbc4de2550ba1ecdcff082a
-y
-Iservices/order-service/images/src/main/java/com/northface-clone/Main.java,f/c/fc1b7b65286d5d1fefb1450136c6eb0242ebef7d
+n
+>src/main/java/com/northfaceclone/userservice/models/Token.java,f/3/f357b7546a0453d925b53ffa16e7da2b624af859
+z
+Jsrc/main/java/com/northface_clone/paymentservice/models/PaymentMethod.java,2/b/2b835af38bb3d0062a7313c7b19a30a451da2497
+m
+=src/main/java/com/northfaceclone/authservice/entity/User.java,6/9/693bcbdad8c041456a424964158fbe32a5dad282
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+m
+=src/main/java/com/northfaceclone/userservice/models/User.java,3/f/3fa01d582bdf961677a8c708e5bc20188173b472
+m
+=src/main/java/com/northfaceclone/authservice/entity/Role.java,2/d/2d147019b13ed43c6ae6d6a2f5089bef8b444c1e
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+K
+images/microservices.drawio,f/e/fe2e9b44004d9fcb9a8c49d6f36c920f39af6d66

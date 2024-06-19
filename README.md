@@ -13,7 +13,7 @@
 - [Contact](#contact)
 
 ### Project architecture
-![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/architecture.png)
+![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/Global-architecture.png)
 
 ### Project-structure
 #### Microservices Overview:
