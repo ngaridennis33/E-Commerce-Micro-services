@@ -1,9 +1,9 @@
 package com.northfaceclone.authservice.controller;
 
-import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
-import com.northfaceclone.userservice.dto.request.AccountRequestDTO;
+import com.northfaceclone.authservice.dto.request.AuthenticationRequest;
+import com.northfaceclone.userservice.dto.request.UserRequestDTO;
 import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
-import com.northfaceclone.userservice.service.AuthenticationService;
+import com.northfaceclone.authservice.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
@@ -24,7 +24,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<Void> register(
-            @RequestBody @Valid AccountRequestDTO request
+            @RequestBody @Valid UserRequestDTO request
     ) throws MessagingException {
         service.register(request);
         return ResponseEntity.accepted().build();
@@ -45,5 +45,4 @@ public class AuthenticationController {
     ){
         return ResponseEntity.ok(service.authenticate(request));
     }
-
 }

@@ -1,4 +1,4 @@
-package com.northfaceclone.userservice.dto.request;
+package com.northfaceclone.authservice.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

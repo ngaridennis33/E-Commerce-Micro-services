@@ -1,4 +1,4 @@
-package com.northfaceclone.userservice.handler;
+package com.northfaceclone.authservice.handler;
 
 
 import com.northfaceclone.userservice.dto.response.ExceptionResponse;

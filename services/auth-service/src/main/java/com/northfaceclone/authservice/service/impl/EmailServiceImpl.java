@@ -1,4 +1,4 @@
-package com.northfaceclone.userservice.service.impl;
+package com.northfaceclone.authservice.service.impl;
 
 import com.northfaceclone.userservice.dto.common.EmailTemplateName;
 import com.northfaceclone.userservice.service.EmailService;

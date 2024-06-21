@@ -21,12 +21,14 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Account extends BaseEntity implements UserDetails, Principal {
+@Table(name = "Auth")
+public class User extends BaseEntity implements UserDetails, Principal {
 
-    @Column(unique = true)
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String email;
+    private String username;
     private String password;
     private boolean accountLocked;
     private boolean enabled;
@@ -77,7 +79,11 @@ public class Account extends BaseEntity implements UserDetails, Principal {
         return enabled;
     }
 
-    private String fullName(){
+    public String fullName(){
         return "firstname" + " " + "lastname";
+    }
+
+    public String getFullName() {
+        return fullName();
     }
 }

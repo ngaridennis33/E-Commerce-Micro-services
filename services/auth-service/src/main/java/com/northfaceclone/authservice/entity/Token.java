@@ -1,24 +1,22 @@
 package com.northfaceclone.authservice.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
-public class Token  {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false, updatable = false)
-    private Integer id;
+public class Token extends BaseEntity {
 
     private String token;
     private LocalDateTime expiresAt;
@@ -26,5 +24,5 @@ public class Token  {
 
     @ManyToOne
     @JoinColumn(name = "accountId", nullable = false)
-    private Account account;
+    private User user;
 }

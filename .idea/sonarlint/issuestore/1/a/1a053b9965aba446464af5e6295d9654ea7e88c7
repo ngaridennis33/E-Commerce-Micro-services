@@ -1,0 +1,9 @@
+
+š
+java:S4144:"WUpdate this method so that its implementation is not identical to "getName" on line 40.(ú´­÷8Á³Ğô‚2J$8ba42f4b-de64-43fc-ae3a-38cf8e06be5a
+j
+java:S1948%"'Make "roles" transient or serializable.(ÿÎÌ“8‚Ÿæƒ2J$4373e6c0-4cfa-486a-90c5-f77ab2f1a04b
+½
+java:S62041"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8 ‚Ÿæƒ2J$f87b339a-b2ad-4599-9bf0-46e82b99e51c
+‹
+java:S4275:"HRefactor this getter so that it actually refers to the field "username".(ú´­÷8Øæ¢åƒ2J$bdf9515c-0b5b-4be3-9d17-43afdcd31de8

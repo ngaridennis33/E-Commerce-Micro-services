@@ -340,3 +340,7 @@ bservices/auth-service/src/main/java/com/northfaceclone/authservice/dto/request/
 eservices/auth-service/src/main/java/com/northfaceclone/authservice/dto/request/AccountRequestDTO.java,2/4/240d87323a6b361fc80ea229bdd353a2a2b84635
 —
 gservices/auth-service/src/main/java/com/northfaceclone/authservice/dto/response/AccountResponseDTO.java,a/d/adee832d473bb0cdff6e5fae57d7e2ac4d6cf395
+™
+iservices/auth-service/src/main/java/com/northfaceclone/authservice/dto/request/AuthenticationRequest.java,3/5/356fc6999fa378ea1139edf1529bbf120689c93a
+–
+fservices/auth-service/src/main/java/com/northfaceclone/authservice/handler/GlobalExceptionHandler.java,1/8/18e7ecc40c82a618299e21bf694f2bfe80b4750c

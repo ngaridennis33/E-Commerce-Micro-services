@@ -25,6 +25,6 @@ public class Role extends BaseEntity {
 
     @ManyToMany(mappedBy = "roles")
     @JsonIgnore
-    private List<Account> accountList;
+    private List<User> accountList;
 
 }

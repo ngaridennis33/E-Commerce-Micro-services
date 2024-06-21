@@ -1,14 +1,15 @@
 package com.northfaceclone.authservice.service;
 
-import com.northfaceclone.userservice.dto.request.AuthenticationRequest;
-import com.northfaceclone.userservice.dto.request.AccountRequestDTO;
+import com.northfaceclone.authservice.dto.request.AuthenticationRequest;
+import com.northfaceclone.authservice.dto.request.AuthenticationRequest;
+import com.northfaceclone.userservice.dto.request.UserRequestDTO;
 import com.northfaceclone.userservice.dto.response.AuthenticationResponse;
 import jakarta.mail.MessagingException;
 
 public interface AuthenticationService {
 
     //    Register User
-    void register(AccountRequestDTO request) throws MessagingException;
+    void register(UserRequestDTO request) throws MessagingException;
 
     //    Login
     AuthenticationResponse authenticate(AuthenticationRequest request);
