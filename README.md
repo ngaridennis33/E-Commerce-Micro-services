@@ -1,14 +1,14 @@
 # RESTful Microservices Architecture for E-Commerce with Spring Boot
-
+---
 ## Introduction
 
 - This project leverages Spring Boot to implement a microservices architecture tailored for e-commerce platforms.
   This architecture enables modular, scalable, and maintainable services, each responsible for distinct functionalities
   within the e-commerce ecosystem. The project incorporates intuitive, reactive programming and event-driven design
   patterns, following industry-best coding practices to enhance functionality and performance.
-
+---
 ### Table of contents
-
+---
 - [Project architecture](#Project-architecture)
 - [Project structure](#Project-structure)
 - [Database architecture](#Database-architecture)
@@ -18,11 +18,11 @@
 - [Contact](#contact)
 
 ### Project global architecture
-
+---
 ![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/Global-architecture.png)
 
 ### Project-structure
-
+---
 - The project is divided into three major categories. The core structure, the services and the supporting microservices.
 
 ### Core
@@ -44,7 +44,7 @@
       Example Tools: ELK Stack (Elasticsearch, Logstash, Kibana), Prometheus, Grafana.
 
 #### Services
-
+---
 * Auth Service
     - Responsibilities: Managing user accounts, authentication, authorization, token management.
       Endpoints:
@@ -102,7 +102,7 @@
         - GET /shipments/orders/{orderId} - Retrieve shipment by order ID.
 
 #### Supporting Microservices
-
+---
 * Inventory Service:
     - Responsibilities: Managing stock levels, inventory adjustments, and warehouse locations.
       Endpoints:
@@ -132,13 +132,13 @@
       Endpoints:
         - GET /recommendations/user/{userId} - Retrieve recommendations for a user.
         - GET /recommendations/product/{productId} - Retrieve related product recommendations.
-
+---
 ## Database architecture
-
+---
 ![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/micro-services-entity-domains.png)
-
+---
 # Technologies and Concepts Used
-
+---
 - Java 17
 - Spring Boot
 - Maven
@@ -153,9 +153,9 @@
 ### Security
 
 - JWT Tokens: Used for authentication and authorization.
-
+---
 ### Auth Architecture
-
+---
 ![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/Auth-architecture.png)
 
 ### QA/Testing
@@ -172,21 +172,21 @@
 - Docker
 - GitHub Actions: Automatically builds, tests and publishes Docker images to Docker Hub.
 
+---
 ### Event-Driven Messaging
-
+---
 - Kafka
 #### Architecture
-
+---
 ![micro](https://github.com/ngaridennis33/E-Commerce-Micro-services/blob/main/images/kafka-broker.png)
 
 ### Observability
-
 - Grafana: Data visualization.
 - OpenTelemetry: Collect metrics, traces, and logs.
 - Grafana Loki: `Logging`.
 - Grafana Tempo and Zipkin: `Distributed Tracing`.
 - Prometheus: `Metrics`.
-
+---
 ### Status
-
+---
 Application status: BETA
